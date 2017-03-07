@@ -12,17 +12,20 @@ no space, no extra zero, no incorrect value
 Converts a text IP address to binary
 
 ex:
+
   IpStrToBin("1.2.3.4") returns 16909060
 
 ###IpBinToStr
 Converts a binary IP address to text
 
 ex:
+
   IpBinToStr(16909060) returns "1.2.3.4"
 
 ###IpAdd
 
 ex:
+
   IpAdd("192.168.1.1"; 4) returns "192.168.1.5"
   
   IpAdd("192.168.1.1"; 256) returns "192.168.2.1"
@@ -31,6 +34,7 @@ ex:
 IP logical AND
 
 ex:
+
   IpAnd("192.168.1.1"; "255.255.255.0") returns "192.168.1.0"
   
 
@@ -41,12 +45,14 @@ another implementation of IpAdd which not use the binary representation
 get one byte from an ip address given its position
 
 ex:
+
   IpGetByte("192.168.1.1"; 1) returns 192
 
 ###IpSetByte
 set one byte in an ip address given its position and value
 
 ex:
+
   IpSetByte("192.168.1.1"; 4; 20) returns "192.168.1.20"
 
 ###IpMask
@@ -54,6 +60,7 @@ returns an IP netmask from a subnet
 both notations are accepted
 
 ex:
+
   IpMask("192.168.1.1/24") returns "255.255.255.0"
   
   IpMask("192.168.1.1 255.255.255.0") returns "255.255.255.0"
@@ -63,6 +70,7 @@ returns an IP Wildcard (inverse) mask from a subnet
 both notations are accepted
 
 ex:
+
   IpWildMask("192.168.1.1/24") returns "0.0.0.255"
   
   IpWildMask("192.168.1.1 255.255.255.0") returns "0.0.0.255"
@@ -72,6 +80,7 @@ returns an IP Wildcard (inverse) mask from a subnet mask
 or a subnet mask from a wildcard mask
 
 ex:
+
   IpWildMask("255.255.255.0") returns "0.0.0.255"
   
   IpWildMask("0.0.0.255") returns "255.255.255.0"
@@ -80,12 +89,14 @@ ex:
 returns prefix length from a mask given by a string notation (xx.xx.xx.xx)
 
 ex:
+
   IpMaskLen("255.255.255.0") returns 24 which is the number of bits of the subnetwork prefix
 
 ###IpWithoutMask
 removes the netmask notation at the end of the IP
 
 ex:
+
   IpWithoutMask("192.168.1.1/24") returns "192.168.1.1"
   
   IpWithoutMask("192.168.1.1 255.255.255.0") returns "192.168.1.1"
@@ -102,6 +113,7 @@ ex:
 returns the number of addresses in a subnet
 
 ex:
+
   IpSubnetSize("192.168.1.32/29") returns 8
   
   IpSubnetSize("192.168.1.0 255.255.255.0") returns 256
@@ -110,6 +122,7 @@ ex:
 set to zero the bits in the host part of an address
 
 ex:
+
   IpClearHostBits("192.168.1.1/24") returns "192.168.1.0/24"
   
   IpClearHostBits("192.168.1.193 255.255.255.128") returns "192.168.1.128 255.255.255.128"
@@ -119,6 +132,7 @@ returns TRUE if "ip" is in "subnet"
 subnet must have the / mask notation (xx.xx.xx.xx/yy)
 
 ex:
+
   IpIsInSubnet("192.168.1.35"; "192.168.1.32/29") returns TRUE
   
   IpIsInSubnet("192.168.1.35"; "192.168.1.32 255.255.255.248") returns TRUE
@@ -161,6 +175,7 @@ returns TRUE if "subnet1" is in "subnet2"
 subnets must have the / mask notation (xx.xx.xx.xx/yy)
 
 ex:
+
   IpSubnetIsInSubnet("192.168.1.35/30"; "192.168.1.32/29") returns TRUE
   
   IpSubnetIsInSubnet("192.168.1.41/30"; "192.168.1.32/29") returns FALSE
@@ -269,6 +284,7 @@ divide a network in smaller subnets
 "SubnetSeqNbr" is the index of the smaller subnet to return
 
 ex:
+
   IpDivideSubnet("1.2.3.0/24"; 2; 0) returns "1.2.3.0/26"
   
   IpDivideSubnet("1.2.3.0/24"; 2; 1) returns "1.2.3.64/26"
@@ -278,6 +294,7 @@ ex:
 returns TRUE if "ip" is in one of the private IP address ranges
 
 ex:
+
   IpIsPrivate("192.168.1.35") returns TRUE
   
   IpIsPrivate("209.85.148.104") returns FALSE
@@ -287,6 +304,7 @@ ex:
 difference between 2 IP addresses
 
 ex:
+
   IpDiff("192.168.1.7"; "192.168.1.1") returns 6
   
 
@@ -295,6 +313,7 @@ Parses an IP address by iteration from right to left
 Removes one byte from the right of "ip" and returns it as an integer
 
 ex:
+
   if ip="192.168.1.32"
   
   IpParse(ip) returns 32 and ip="192.168.1" when the function returns
@@ -307,14 +326,22 @@ If "ip_byte" is greater than 255, only the lower 8 bits are added to "ip"
 and the remaining bits are returned to be used on the next IpBuild call
 
 ex 1:
+
   if ip="168.1.1"
+  
   IpBuild(192, ip) returns 0 and ip="192.168.1.1"
+  
 ex 2:
+
   if ip="1"
+  
   IpBuild(258, ip) returns 1 and ip="2.1"
+  
 
 ###IpMaskBin
 returns binary IP mask from an address with / notation (xx.xx.xx.xx/yy)
+
 ex:
+
   IpMask("192.168.1.1/24") returns 4294967040 which is the binary
   representation of "255.255.255.0"
