@@ -1,5 +1,5 @@
 # VBAIPFunctions
-IP manipulation and lookup VBA functions
+VBA functions for IP manipulation and IP/Subnet lookup
 
 ## Functions List
 
