@@ -11,6 +11,7 @@
 '| along with this program.  If not, see <http://www.gnu.org/licenses/>.    |
 '============================================================================
 '| IP Functions v2.0.3 (20160810)                                           |
+'| https://github.com/andreafortuna/VBAIPFunctions                          |
 '============================================================================
 '|  Andrea Fortuna                                                          |
 '|  https://andreafortuna.org                                               |
