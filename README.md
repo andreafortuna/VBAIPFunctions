@@ -4,7 +4,7 @@ VBA functions for IP manipulation and IP/Subnet lookup
 ## Functions List
 
 
-###IpIsValid
+### IpIsValid
 Returns true if an ip address is formated exactly as it should be:
 no space, no extra zero, no incorrect value
 
@@ -15,14 +15,14 @@ ex:
 
   IpStrToBin("1.2.3.4") returns 16909060
 
-###IpBinToStr
+### IpBinToStr
 Converts a binary IP address to text
 
 ex:
 
   IpBinToStr(16909060) returns "1.2.3.4"
 
-###IpAdd
+### IpAdd
 
 ex:
 
@@ -30,7 +30,7 @@ ex:
   
   IpAdd("192.168.1.1"; 256) returns "192.168.2.1"
 
-###IpAnd
+### IpAnd
 IP logical AND
 
 ex:
@@ -38,24 +38,24 @@ ex:
   IpAnd("192.168.1.1"; "255.255.255.0") returns "192.168.1.0"
   
 
-###IpAdd2
+### IpAdd2
 another implementation of IpAdd which not use the binary representation
 
-###IpGetByte
+### IpGetByte
 get one byte from an ip address given its position
 
 ex:
 
   IpGetByte("192.168.1.1"; 1) returns 192
 
-###IpSetByte
+### IpSetByte
 set one byte in an ip address given its position and value
 
 ex:
 
   IpSetByte("192.168.1.1"; 4; 20) returns "192.168.1.20"
 
-###IpMask
+### IpMask
 returns an IP netmask from a subnet
 both notations are accepted
 
@@ -65,7 +65,7 @@ ex:
   
   IpMask("192.168.1.1 255.255.255.0") returns "255.255.255.0"
 
-###IpWildMask
+### IpWildMask
 returns an IP Wildcard (inverse) mask from a subnet
 both notations are accepted
 
@@ -75,7 +75,7 @@ ex:
   
   IpWildMask("192.168.1.1 255.255.255.0") returns "0.0.0.255"
 
-###IpInvertMask
+### IpInvertMask
 returns an IP Wildcard (inverse) mask from a subnet mask
 or a subnet mask from a wildcard mask
 
@@ -85,14 +85,14 @@ ex:
   
   IpWildMask("0.0.0.255") returns "255.255.255.0"
 
-###IpMaskLen
+### IpMaskLen
 returns prefix length from a mask given by a string notation (xx.xx.xx.xx)
 
 ex:
 
   IpMaskLen("255.255.255.0") returns 24 which is the number of bits of the subnetwork prefix
 
-###IpWithoutMask
+### IpWithoutMask
 removes the netmask notation at the end of the IP
 
 ex:
@@ -101,7 +101,7 @@ ex:
   
   IpWithoutMask("192.168.1.1 255.255.255.0") returns "192.168.1.1"
   
-###IpSubnetLen
+### IpSubnetLen
 get the mask len from a subnet
 
 ex:
@@ -109,7 +109,7 @@ ex:
   
   IpSubnetLen("192.168.1.1 255.255.255.0") returns 24
 
-###IpSubnetSize
+### IpSubnetSize
 returns the number of addresses in a subnet
 
 ex:
@@ -118,7 +118,7 @@ ex:
   
   IpSubnetSize("192.168.1.0 255.255.255.0") returns 256
 
-###IpClearHostBits
+### IpClearHostBits
 set to zero the bits in the host part of an address
 
 ex:
@@ -127,7 +127,7 @@ ex:
   
   IpClearHostBits("192.168.1.193 255.255.255.128") returns "192.168.1.128 255.255.255.128"
 
-###IpIsInSubnet
+### IpIsInSubnet
 returns TRUE if "ip" is in "subnet"
 subnet must have the / mask notation (xx.xx.xx.xx/yy)
 
@@ -140,7 +140,7 @@ ex:
   IpIsInSubnet("192.168.1.41"; "192.168.1.32/29") returns FALSE
   
 
-###IpSubnetVLookup
+### IpSubnetVLookup
 tries to match an IP address against a list of subnets in the left-most
 column of table_array and returns the value in the same row based on the
 index_number
@@ -158,7 +158,7 @@ this function selects the smallest matching subnet
 note: add the subnet 0.0.0.0/0 at the end of the array if you want the
 function to return a default value
 
-###IpSubnetMatch
+### IpSubnetMatch
 tries to match an IP address against a list of subnets in the left-most
 column of table_array and returns the row number
 this function selects the smallest matching subnet
@@ -170,7 +170,7 @@ this function selects the smallest matching subnet
 
 returns 0 if the IP address is not matched.
 
-###IpSubnetIsInSubnet
+### IpSubnetIsInSubnet
 returns TRUE if "subnet1" is in "subnet2"
 subnets must have the / mask notation (xx.xx.xx.xx/yy)
 
@@ -183,7 +183,7 @@ ex:
   IpSubnetIsInSubnet("192.168.1.35/28"; "192.168.1.32/29") returns FALSE
   
 
-###IpSubnetInSubnetVLookup
+### IpSubnetInSubnetVLookup
 tries to match a subnet against a list of subnets in the left-most
 column of table_array and returns the value in the same row based on the
 index_number
@@ -201,7 +201,7 @@ in the array
 note: add the subnet 0.0.0.0/0 at the end of the array if you want the
 function to return a default value
 
-###IpSubnetInSubnetMatch
+### IpSubnetInSubnetMatch
 tries to match a subnet against a list of subnets in the left-most
 column of table_array and returns the row number
 the value matches if 'subnet' is equal or included in one of the subnets
@@ -214,7 +214,7 @@ in the array
 
 returns 0 if the subnet is not included in any of the subnets from the list
 
-###IpFindOverlappingSubnets
+### IpFindOverlappingSubnets
 this function must be used in an array formula
 it will find in the list of subnets which subnets overlap
 
@@ -229,7 +229,7 @@ then this function returns on line x an empty cell
 if there are no overlapping subnets in the input array, the returned array
 is empty
 
-###IpSortArray
+### IpSortArray
 this function must be used in an array formula
 
 "ip_array" is a single column array containing ip addresses
@@ -239,7 +239,7 @@ addresses sorted in ascending or descending order
 "descending" is an optional parameter, if set to True the addresses are
 sorted in descending order
 
-###IpSubnetSortArray
+### IpSubnetSortArray
 this function must be used in an array formula
 
 "ip_array" is a single column array containing ip subnets in "prefix/len"
@@ -250,7 +250,7 @@ subnets sorted in ascending or descending order
 "descending" is an optional parameter, if set to True the subnets are
 sorted in descending order
 
-###IpParseRoute
+### IpParseRoute
 this function is used by IpSubnetSortJoinArray to extract the subnet
 and next hop in route
 the supported formats are
@@ -261,7 +261,7 @@ the supported formats are
 
 the next hop can be any character sequence, and not only an IP
 
-###IpSubnetSortJoinArray
+### IpSubnetSortJoinArray
 this fuction car sort and summarize subnets or ip routes
 it must be used in an array formula
 
@@ -276,7 +276,7 @@ each line may contain any character sequence after the subnet, such as
 a next hop or any parameter of an ip route
 in this case, only subnets with the same parameters will be summarized
 
-###IpDivideSubnet
+### IpDivideSubnet
 divide a network in smaller subnets
 
 "n" is the value that will be added to the subnet length
@@ -290,7 +290,7 @@ ex:
   IpDivideSubnet("1.2.3.0/24"; 2; 1) returns "1.2.3.64/26"
   
 
-###IpIsPrivate
+### IpIsPrivate
 returns TRUE if "ip" is in one of the private IP address ranges
 
 ex:
@@ -300,7 +300,7 @@ ex:
   IpIsPrivate("209.85.148.104") returns FALSE
   
 
-###IpDiff
+### IpDiff
 difference between 2 IP addresses
 
 ex:
@@ -308,7 +308,7 @@ ex:
   IpDiff("192.168.1.7"; "192.168.1.1") returns 6
   
 
-###IpParse
+### IpParse
 Parses an IP address by iteration from right to left
 Removes one byte from the right of "ip" and returns it as an integer
 
@@ -318,7 +318,7 @@ ex:
   
   IpParse(ip) returns 32 and ip="192.168.1" when the function returns
 
-###IpBuild
+### IpBuild
 Builds an IP address by iteration from right to left
 Adds "ip_byte" to the left the "ip"
 
@@ -338,7 +338,7 @@ ex 2:
   IpBuild(258, ip) returns 1 and ip="2.1"
   
 
-###IpMaskBin
+### IpMaskBin
 returns binary IP mask from an address with / notation (xx.xx.xx.xx/yy)
 
 ex:
